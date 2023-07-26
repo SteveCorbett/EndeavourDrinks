@@ -1,4 +1,5 @@
 ﻿using EndeavourModels;
+using EndeavourModels.APIs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace EndeavourDrinks.DAL.Repositories
         //void EmptyTrolley(Guid trolleyID);
         //List<TrolleyItem> GetTrolleyItems(Guid trolleyID);
         //Trolley GetTrolley(Guid trolleyID);
-        List<TrolleyItem> GetTrolleys(int CustomerId);
+        Task<List<Trolley>> GetTrolleys(int CustomerId);
+        Task<TrolleyItemsResult> GetTrolleyItems(Guid TrolleyId);
     }
 }

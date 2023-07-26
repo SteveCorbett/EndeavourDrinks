@@ -9,7 +9,6 @@ namespace EndeavourDrinks.Controllers
         [Route("api/[controller]")]
     public class CustomerController : Controller
     {
-
         private readonly ICustomerRepository _customerRepository;
 
         public CustomerController(

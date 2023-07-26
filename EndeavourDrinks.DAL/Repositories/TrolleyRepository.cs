@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using EndeavourDrinks.Connectionfactory;
 using EndeavourModels;
+using EndeavourModels.APIs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,8 +23,26 @@ namespace EndeavourDrinks.DAL.Repositories
                 DynamicParameters dp = new DynamicParameters();
                 dp.Add("@customerID", customerID);
 
-                result = await dbConnection.QueryAsync<Trolley>("[dbo].[CustomerGet]", dp,
-                    commandType: CommandType.StoredProcedure).ToList();
+                var resultSet = await dbConnection.QueryAsync<Trolley>("[dbo].[TrolleyGetAllActive]", dp,
+                    commandType: CommandType.StoredProcedure);
+                result = resultSet.ToList();
+            }
+            catch (Exception ex) {
+                throw;
+            }
+            return result;
+        }
+
+        public async Task<TrolleyItemsResult> GetTrolleyItems(Guid TrolleyId) {
+            TrolleyItemsResult result = new TrolleyItemsResult();
+            try {
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("@TrolleyID", TrolleyId);
+
+                var gridReader = await dbConnection.QueryMultipleAsync("[dbo].[TrolleyItemsGetAllActive]", dp,
+                    commandType: CommandType.StoredProcedure);
+                result.TrolleyItems = gridReader.Read<TrolleyItem>().ToList();
+                result.Products = gridReader.Read<Product>().ToList();
             }
             catch (Exception ex) {
                 throw;

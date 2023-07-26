@@ -4,5 +4,6 @@
     {
         public Guid TrolleyID { get; set; }
         public int CustomerID { get; set; }
+
     }
 }

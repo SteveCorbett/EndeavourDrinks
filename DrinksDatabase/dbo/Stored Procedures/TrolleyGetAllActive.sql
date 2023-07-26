@@ -1,7 +1,7 @@
 ﻿-- =============================================
--- Description:	Return a customer 
+-- Description:	Return all active trolleys for a customer 
 -- =============================================
-CREATE PROCEDURE [dbo].[CustomerGet]
+CREATE PROCEDURE [dbo].[TrolleyGetAllActive]
 	@CustomerId		int
 AS
 BEGIN
@@ -13,16 +13,16 @@ BEGIN
 
 	BEGIN TRY
 
-		SELECT [FirstName]
-			  ,[LastName]
-			  ,[Email]
+		SELECT [TrolleyId]
+			  ,[CustomerId]
 			  ,[InsertedDate]
 			  ,[InsertedBy]
 			  ,[UpdatedDate]
 			  ,[UpdatedBy]
 			  ,[IsActive]
-		  FROM [dbo].[Customers]
+		  FROM [dbo].[Trolleys]
 		 WHERE [CustomerId] = @CustomerId
+		   AND [IsActive] = 1
 		;
 	END TRY
  

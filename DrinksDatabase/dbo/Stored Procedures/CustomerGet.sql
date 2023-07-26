@@ -13,7 +13,8 @@ BEGIN
 
 	BEGIN TRY
 
-		SELECT [FirstName]
+		SELECT [CustomerId]
+			  ,[FirstName]
 			  ,[LastName]
 			  ,[Email]
 			  ,[InsertedDate]

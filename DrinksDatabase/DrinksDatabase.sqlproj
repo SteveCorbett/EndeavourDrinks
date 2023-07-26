@@ -156,5 +156,7 @@
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
     <Build Include="Security\log.sql" />
+    <Build Include="dbo\Stored Procedures\TrolleyGetAllActive.sql" />
+    <Build Include="dbo\Stored Procedures\TrolleyItemsGetAllActive.sql" />
   </ItemGroup>
 </Project>
