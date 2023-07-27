@@ -1,0 +1,14 @@
+<div class="m-2 p-2 border-solid rounded border-gray-200 border-2">
+  <h1>Welcome {{ customerService.customer.firstName }}</h1>
+  <p>
+    Our aim is to be the best provider of an exclusive range of alcoholic and
+    non-alcoholic drinks, delivered to your home or business.
+  </p>
+
+  <p>Select the products from the list below:</p>
+  <hr />
+  <ng-container *ngFor="let prodClass of classes" class="flex flex-wrap">
+    <app-prod-class [productClass]="prodClass"></app-prod-class>
+    <hr />
+  </ng-container>
+</div>

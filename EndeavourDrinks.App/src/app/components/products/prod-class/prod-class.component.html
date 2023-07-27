@@ -1,0 +1,11 @@
+<div class="mt-2">
+  <p class="mb-4 text-2xl font-medium">{{ productClass.name }}</p>
+  <div class="flex border-b-2 mx-2">
+    <div class="basis-4/6 border-gray-200">Product</div>
+    <div class="basis-1/6 border-gray-200 flex justify-end max80">Price</div>
+    <div class="basis-1/6 border-gray-200 flex justify-end max80">xxx</div>
+  </div>
+  <ng-container *ngFor="let product of productClass.products">
+    <app-product [product]="product"></app-product>
+  </ng-container>
+</div>

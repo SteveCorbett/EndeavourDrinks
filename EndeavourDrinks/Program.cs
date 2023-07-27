@@ -13,6 +13,7 @@ if (builder.Environment.IsDevelopment()) {
 
 builder.Services.AddScoped<IConnectionFactory, ConnectionFactory>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ITrolleyRepository, TrolleyRepository>();
 
 var app = builder.Build();

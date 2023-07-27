@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[Trolleys] (
     [TrolleyId]  UNIQUEIDENTIFIER DEFAULT (newid()) NOT NULL,
     [CustomerId] INT              NOT NULL,
-    [SubTotal]   DECIMAL (10, 2) NOT NULL,
-    [Discounts]   DECIMAL (10, 2) NOT NULL,
-    [OrderTotal]   DECIMAL (10, 2) NOT NULL,
+    [SubTotal]   DECIMAL (10, 2)  CONSTRAINT [DF_Trolley_SubTotal] DEFAULT (0) NOT NULL,
+    [Discounts]   DECIMAL (10, 2)  CONSTRAINT [DF_Trolley_Discounts] DEFAULT (0) NOT NULL,
+    [OrderTotal]   DECIMAL (10, 2)  CONSTRAINT [DF_Trolley_OrderTotal] DEFAULT (0) NOT NULL,
     [InsertedDate] DATETIME       CONSTRAINT [DF_Trolley_Inserted] DEFAULT (getutcdate()) NOT NULL,
     [InsertedBy]   NVARCHAR (100) CONSTRAINT [DF_Trolley_InsertedBy] DEFAULT ('System') NOT NULL,
     [UpdatedDate]  DATETIME       CONSTRAINT [DF_Trolley_Updated] DEFAULT (getutcdate()) NOT NULL,

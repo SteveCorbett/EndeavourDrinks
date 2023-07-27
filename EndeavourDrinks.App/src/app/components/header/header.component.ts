@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppMaterialModule } from 'src/app/app.material.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { CustomerGlyphComponent } from './customer-glyph/customer-glyph.component';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, AppMaterialModule],
+  imports: [CommonModule, MatToolbarModule, CustomerGlyphComponent],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-
-}
+export class HeaderComponent {}

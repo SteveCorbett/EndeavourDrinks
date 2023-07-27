@@ -2,6 +2,7 @@
     [ProductId]   INT   IDENTITY (1, 1) NOT NULL,
     [ProductCode] VARCHAR (20)    NOT NULL,
     [ProductName] VARCHAR (100)   NOT NULL,
+    [ProductClass] VARCHAR (15)   NOT NULL DEFAULT('Wine'),
     [SalePrice]   DECIMAL (10, 2) NOT NULL,
     [InsertedDate] DATETIME       CONSTRAINT [DF_Prod_Inserted] DEFAULT (getutcdate()) NOT NULL,
     [InsertedBy]   NVARCHAR (100) CONSTRAINT [DF_Prod_InsertedBy] DEFAULT ('System') NOT NULL,

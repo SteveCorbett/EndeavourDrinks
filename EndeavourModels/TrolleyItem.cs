@@ -2,10 +2,10 @@
 {
     public class TrolleyItem : BaseTable
     {
-        public Guid TrolleyItemID { get; set; }
-        public Guid TrolleyID { get; set; }
+        public Guid TrolleyItemId { get; set; }
+        public Guid TrolleyId { get; set; }
         public int Sequence { get; set; }
-        public string ProductID { get; set; } = "";
+        public string ProductId { get; set; } = "";
         public decimal SalePrice { get; set; }
         public int Quantity { get; set; }
     }

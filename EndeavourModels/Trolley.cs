@@ -2,8 +2,8 @@
 {
     public class Trolley : BaseTable
     {
-        public Guid TrolleyID { get; set; }
-        public int CustomerID { get; set; }
+        public Guid TrolleyId { get; set; }
+        public int CustomerId { get; set; }
 
     }
 }

@@ -1,1 +1,31 @@
-<p>login works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Login to Endeavour Drinks</mat-card-title>
+    <mat-card-subtitle
+      >This is where you'd normally enter your credentials</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content class="my-8">
+    <form class="flex flex-col">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username" required />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" required />
+      </mat-form-field>
+    </form>
+    <p>No need to enter these, for now just press the button!</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!canClick"
+      (click)="login()"
+    >
+      Login
+    </button>
+  </mat-card-actions>
+</mat-card>
