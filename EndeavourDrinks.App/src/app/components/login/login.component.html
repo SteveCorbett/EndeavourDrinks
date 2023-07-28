@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="max-w-xs">
   <mat-card-header>
     <mat-card-title>Login to Endeavour Drinks</mat-card-title>
     <mat-card-subtitle
@@ -8,24 +8,34 @@
   <mat-card-content class="my-8">
     <form class="flex flex-col">
       <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input matInput type="text" formControlName="username" required />
+        <mat-label>Your Email</mat-label>
+        <input matInput type="email" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" required />
+        <input matInput type="password" />
+      </mat-form-field>
+      <p>
+        No need to enter these, for now select a customer and press the log in
+        button!
+      </p>
+      <mat-form-field>
+        <mat-label>Customer</mat-label>
+        <mat-select [(value)]="customerId">
+          <mat-option value="1">Walter Greenway </mat-option>
+          <mat-option value="2">Margaret Smith </mat-option>
+        </mat-select>
       </mat-form-field>
     </form>
-    <p>No need to enter these, for now just press the button!</p>
   </mat-card-content>
   <mat-card-actions>
     <button
       mat-raised-button
       color="primary"
-      [disabled]="!canClick"
+      [disabled]="!canClick || customerId === 0"
       (click)="login()"
     >
-      Login
+      Log In
     </button>
   </mat-card-actions>
 </mat-card>

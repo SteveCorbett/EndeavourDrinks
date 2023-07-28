@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ProdClassComponent } from './prod-class/prod-class.component';
 import { NgFor } from '@angular/common';
 import { CustomerService } from 'src/app/services/customer.service';
+import { TrolleyService } from 'src/app/services/trolley.service';
 
 export interface IProductClass {
   name: string;
@@ -22,13 +23,15 @@ export class ProductsComponent {
   classes: IProductClass[] = [];
   constructor(
     protected customerService: CustomerService,
-    private productService: ProductService
+    private productService: ProductService,
+    private trolleyService: TrolleyService
   ) {
     this.productService.product$
       .pipe(takeUntilDestroyed())
       .subscribe((products: IProduct[]) => {
         this.processProducts(products);
       });
+    this.trolleyService.getTrolley(customerService.customer.customerId);
   }
 
   private processProducts(products: IProduct[]): void {

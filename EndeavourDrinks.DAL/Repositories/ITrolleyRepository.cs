@@ -16,7 +16,6 @@ namespace EndeavourDrinks.DAL.Repositories
         //void EmptyTrolley(Guid trolleyID);
         //List<TrolleyItem> GetTrolleyItems(Guid trolleyID);
         //Trolley GetTrolley(Guid trolleyID);
-        Task<List<Trolley>> GetTrolleys(int CustomerId);
-        Task<TrolleyItemsResult> GetTrolleyItems(Guid TrolleyId);
+        Task<TrolleyGetResult> GetTrolley(int CustomerId);
     }
 }

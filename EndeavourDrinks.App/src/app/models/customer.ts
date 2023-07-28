@@ -18,7 +18,7 @@ export class Customer extends BaseTable implements ICustomer {
     return (this.firstName + ' ' + this.lastName).trim();
   }
 
-  public constructor(init?: Partial<ICustomer>) {
+  constructor(init?: Partial<ICustomer>) {
     super(init);
     Object.assign(this, init);
   }

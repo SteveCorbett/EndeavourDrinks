@@ -1,7 +1,12 @@
 <div
   *ngIf="customer.customerId > 0"
-  class="outline text-red rounded-full flex px-1 pt-1 justify-center align-items-center glyph"
+  class="outline text-red rounded-full flex px-1 pt-1 justify-center align-items-center glyph cursor-pointer"
   matTooltip="{{ customer.fullName }}"
+  matTooltipPosition="below"
+  [matMenuTriggerFor]="menu"
 >
   {{ initials }}
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logOut()">Log Out</button>
+  </mat-menu>
 </div>

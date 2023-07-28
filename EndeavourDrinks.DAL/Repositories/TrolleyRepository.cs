@@ -17,34 +17,18 @@ namespace EndeavourDrinks.DAL.Repositories
         public TrolleyRepository(IConnectionFactory factory) : base(factory) {
         }
 
-        public async Task<List<Trolley>> GetTrolleys(int customerID) {
-            List<Trolley> result = new List<Trolley>();
+        public async Task<TrolleyGetResult> GetTrolley(int customerId) {
+            TrolleyGetResult result = new TrolleyGetResult();
             try {
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("@customerID", customerID);
+                dp.Add("@customerID", customerId);
 
-                var resultSet = await dbConnection.QueryAsync<Trolley>("[dbo].[TrolleyGetAllActive]", dp,
+                var gridReader = await dbConnection.QueryMultipleAsync("[dbo].[TrolleyGet]", dp,
                     commandType: CommandType.StoredProcedure);
-                result = resultSet.ToList();
-            }
-            catch (Exception ex) {
-                throw;
-            }
-            return result;
-        }
-
-        public async Task<TrolleyItemsResult> GetTrolleyItems(Guid TrolleyId) {
-            TrolleyItemsResult result = new TrolleyItemsResult();
-            try {
-                DynamicParameters dp = new DynamicParameters();
-                dp.Add("@TrolleyID", TrolleyId);
-
-                var gridReader = await dbConnection.QueryMultipleAsync("[dbo].[TrolleyItemsGetAllActive]", dp,
-                    commandType: CommandType.StoredProcedure);
+                result.Trolley = gridReader.Read<Trolley>().FirstOrDefault(result.Trolley);
                 result.TrolleyItems = gridReader.Read<TrolleyItem>().ToList();
-                result.Products = gridReader.Read<Product>().ToList();
             }
-            catch (Exception ex) {
+            catch {
                 throw;
             }
             return result;

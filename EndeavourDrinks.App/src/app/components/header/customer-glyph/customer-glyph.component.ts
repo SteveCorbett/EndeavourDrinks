@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ICustomer, Customer } from 'src/app/models/customer';
@@ -9,26 +11,32 @@ import { CustomerService } from 'src/app/services/customer.service';
 @Component({
   selector: 'app-customer-glyph',
   standalone: true,
-  imports: [CommonModule, MatTooltipModule],
+  imports: [CommonModule, MatMenuModule, MatTooltipModule],
   templateUrl: './customer-glyph.component.html',
-  styleUrls: ['./customer-glyph.component.css']
+  styleUrls: ['./customer-glyph.component.css'],
 })
 export class CustomerGlyphComponent implements OnInit, OnDestroy {
   protected initials: string = '';
   protected customer: ICustomer = new Customer();
   #subs: Subscription = new Subscription();
 
-  // ToDo: Enable logging out, using drop down menu on click?
-  constructor(private customerService: CustomerService) {}
+  constructor(
+    private router: Router,
+    private customerService: CustomerService
+  ) {}
 
   ngOnInit(): void {
     this.#subs.add(
       this.customerService.customer$.subscribe((customer) => {
         this.customer = customer;
-        if (customer.customerId === 0){ this.initials = ""}
-        else {
+        if (customer.customerId === 0) {
+          this.initials = '';
+        } else {
           const names = customer.fullName.split(' ');
-          this.initials = names.reduce((result, name) => result + name.charAt(0), '');
+          this.initials = names.reduce(
+            (result, name) => result + name.charAt(0),
+            ''
+          );
         }
       })
     );
@@ -36,5 +44,11 @@ export class CustomerGlyphComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.#subs.unsubscribe();
+  }
+
+  logOut(): void {
+    this.customerService.logOut();
+
+    this.router.navigate(['/login']);
   }
 }

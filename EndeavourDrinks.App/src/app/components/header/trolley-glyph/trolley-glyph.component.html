@@ -1,0 +1,19 @@
+<div *ngIf="customerId > 0" class="glyphContainer cursor-pointer">
+  <mat-icon
+    svgIcon="cart-outline"
+    aria-hidden="false"
+    aria-label="Shopping Trolley"
+    class="pt-2"
+    style="width: 48px; height: 44px"
+  />
+  <div
+    *ngIf="trolleyCount > 0"
+    class="rounded-full flex justify-center align-items-center glyph"
+    matTooltip="There are {{ trolleyCount }} item{{
+      trolleyCount > 1 ? 's' : ''
+    }} in your trolley"
+    matTooltipPosition="below"
+  >
+    {{ trolleyCount }}
+  </div>
+</div>

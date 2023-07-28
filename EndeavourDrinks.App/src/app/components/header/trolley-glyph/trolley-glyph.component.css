@@ -1,0 +1,14 @@
+.glyphContainer {
+  max-height: 48px;
+}
+
+.glyph {
+  position: relative;
+  transform: scale(0.6);
+  bottom: 30px;
+  left: 20px;
+  width: 2rem;
+  height: 2rem;
+  background-color: red;
+  color: white;
+}

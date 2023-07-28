@@ -1,7 +1,7 @@
 :host {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("../../../assets/bg-image.png");
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../assets/images/bg-image.png");
 }

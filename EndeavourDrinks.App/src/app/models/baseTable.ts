@@ -13,7 +13,7 @@ export class BaseTable implements IBaseTable {
   public updatedBy: string = '';
   public isActive: boolean = false;
 
-  public constructor(init?: Partial<IBaseTable>) {
+  constructor(init?: Partial<IBaseTable>) {
     Object.assign(this, init);
   }
 }

@@ -27,7 +27,7 @@ export class CustomerService {
     private errorHandler: GlobalErrorHandler
   ) {}
 
-  getCustomer(customerId: number): void {
+  public getCustomer(customerId: number): void {
     this.apiService.getCustomer(customerId).subscribe({
       next: (response) => {
         this._customerBs.next(new Customer(response));
@@ -36,5 +36,9 @@ export class CustomerService {
         this.errorHandler.handleError(error);
       },
     });
+  }
+
+  public logOut(): void {
+    this._customerBs.next(new Customer());
   }
 }

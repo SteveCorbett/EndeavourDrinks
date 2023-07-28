@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace EndeavourModels.APIs
 {
-    public class TrolleyItemsResult
+    public class TrolleyGetResult
     {
+        public Trolley Trolley { get; set; } = new Trolley();
         public List<TrolleyItem> TrolleyItems { get; set; } = new List<TrolleyItem>();
-        public List<Product>   Products { get; set; } = new List<Product>();
     }
 }

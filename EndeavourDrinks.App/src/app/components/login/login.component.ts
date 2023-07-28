@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 
 import { CustomerService } from 'src/app/services/customer.service';
@@ -18,11 +19,13 @@ import { take } from 'rxjs';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  protected customerId: number = 1;
   protected canClick: boolean = true;
 
   constructor(
@@ -35,6 +38,6 @@ export class LoginComponent {
     this.customerService.customer$.pipe(take(2)).subscribe(() => {
       this.router.navigate(['/products']);
     });
-    this.customerService.getCustomer(1);
+    this.customerService.getCustomer(this.customerId);
   }
 }
