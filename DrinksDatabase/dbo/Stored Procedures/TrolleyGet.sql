@@ -34,6 +34,9 @@ BEGIN
 
 		SELECT [TrolleyId]
 			  ,[CustomerId]
+			  ,[SubTotal]
+			  ,[Discounts]
+			  ,[OrderTotal]
 			  ,[InsertedDate]
 			  ,[InsertedBy]
 			  ,[UpdatedDate]

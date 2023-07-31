@@ -11,6 +11,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { The404Component } from './components/the404/the404.component';
 import { ProductService } from './services/product.service';
 import { CustomerService } from './services/customer.service';
+import { TrolleyComponent } from './components/trolley/trolley.component';
+import { TrolleyService } from './services/trolley.service';
 
 @Injectable({ providedIn: 'root' })
 export class LoadProducts implements ResolveData {
@@ -34,6 +36,17 @@ export class LoggedInGuard implements CanActivate {
   }
 }
 
+@Injectable({ providedIn: 'root' })
+export class TrolleyGuard implements CanActivate {
+  constructor(private router: Router, private trolleyService: TrolleyService) {}
+  canActivate() {
+    if (this.trolleyService.trolley.items.length === 0) {
+      this.router.navigate(['/login']);
+    }
+    return true;
+  }
+}
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
@@ -41,6 +54,11 @@ const routes: Routes = [
     component: ProductsComponent,
     resolve: { products: LoadProducts },
     canActivate: [LoggedInGuard],
+  },
+  {
+    path: 'trolley',
+    component: TrolleyComponent,
+    canActivate: [LoggedInGuard, TrolleyGuard],
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: The404Component },

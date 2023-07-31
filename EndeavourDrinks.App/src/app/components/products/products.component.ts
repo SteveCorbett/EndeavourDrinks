@@ -39,19 +39,21 @@ export class ProductsComponent {
     if (!products || products.length === 0) {
       return;
     }
-    products.forEach((product: IProduct) => {
-      var ix = this.classes.findIndex((c) => c.name === product.productClass);
-      var productClass: IProductClass;
-      if (ix < 0) {
-        productClass = {
-          name: product.productClass,
-          products: [product],
-        };
-        this.classes.push(productClass);
-      } else {
-        this.classes[ix].products.push(product);
-      }
-    });
+    products
+      .filter((product: IProduct) => product.isActive)
+      .forEach((product: IProduct) => {
+        var ix = this.classes.findIndex((c) => c.name === product.productClass);
+        var productClass: IProductClass;
+        if (ix < 0) {
+          productClass = {
+            name: product.productClass,
+            products: [product],
+          };
+          this.classes.push(productClass);
+        } else {
+          this.classes[ix].products.push(product);
+        }
+      });
 
     this.classes.sort((a, b) => {
       if ((a.name < b.name && a.name !== 'Other') || b.name === 'Other') {

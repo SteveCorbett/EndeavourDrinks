@@ -25,7 +25,7 @@ import { take } from 'rxjs';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  protected customerId: number = 1;
+  protected customerId: string = '1';
   protected canClick: boolean = true;
 
   constructor(
@@ -38,6 +38,6 @@ export class LoginComponent {
     this.customerService.customer$.pipe(take(2)).subscribe(() => {
       this.router.navigate(['/products']);
     });
-    this.customerService.getCustomer(this.customerId);
+    this.customerService.getCustomer(+this.customerId);
   }
 }

@@ -1,0 +1,47 @@
+<div
+  class="m-3 p-4 border-solid rounded border-2 w-full max-w-screen-lg lg:mx-auto bg-white"
+>
+  <h1>Your Trolley!</h1>
+  <div class="flex justify-between">
+    <div class="basis-6/12">Product</div>
+    <div class="basis-2/12 flex justify-end max80">Price</div>
+    <div class="basis-1/12 flex justify-end">Quantity</div>
+    <div class="basis-2/12 flex justify-end max80">Total Price</div>
+    <div class="basis-1/12 max80"></div>
+  </div>
+  <hr />
+  <ng-container *ngFor="let item of trolley.items" class="flex flex-wrap">
+    <app-trolley-item [item]="item"></app-trolley-item>
+  </ng-container>
+  <hr />
+  <div *ngIf="trolley.discounts !== 0" class="flex justify-between mx-2 my-1.5">
+    <div class="basis-6/12">Sub-Total</div>
+    <div class="basis-2/12 flex justify-end max80"></div>
+    <div class="basis-1/12 flex justify-end"></div>
+    <div class="basis-2/12 flex justify-end max80">
+      ${{ trolley.subTotal | formatValue : "1.2-2" }}
+    </div>
+    <div class="basis-1/12 max80"></div>
+  </div>
+  <div *ngIf="trolley.discounts !== 0" class="flex justify-between mx-2 my-1.5">
+    <div class="basis-6/12">Order Discounts</div>
+    <div class="basis-2/12 flex justify-end max80"></div>
+    <div class="basis-1/12 flex justify-end"></div>
+    <div class="basis-2/12 flex justify-end max80">
+      ${{ trolley.discounts | formatValue : "1.2-2" }}
+    </div>
+    <div class="basis-1/12 max80"></div>
+  </div>
+  <div class="flex justify-between mx-2 my-1.5">
+    <div class="basis-6/12">Total Order</div>
+    <div class="basis-2/12 flex justify-end max80"></div>
+    <div class="basis-1/12 flex justify-end"></div>
+    <div class="basis-2/12 flex justify-end max80">
+      ${{ trolley.orderTotal | formatValue : "1.2-2" }}
+    </div>
+    <div class="basis-1/12 max80"></div>
+  </div>
+  <button mat-raised-button color="primary" class="mt-4" (click)="back()">
+    <mat-icon>arrow_back</mat-icon> Continue Shopping
+  </button>
+</div>

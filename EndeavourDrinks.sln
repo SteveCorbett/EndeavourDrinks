@@ -3,13 +3,34 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EndeavourDrinks", "EndeavourDrinks\EndeavourDrinks.csproj", "{13E32024-6E6B-412D-8B8B-84BC6F681230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndeavourDrinks", "EndeavourDrinks\EndeavourDrinks.csproj", "{13E32024-6E6B-412D-8B8B-84BC6F681230}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DrinksDatabase", "DrinksDatabase\DrinksDatabase.sqlproj", "{915B4BD8-8BAE-43FF-AADC-EC79E17E3CAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EndeavourModels", "EndeavourModels\EndeavourModels.csproj", "{FC92F770-9690-498C-907C-630F6F7E8B59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndeavourModels", "EndeavourModels\EndeavourModels.csproj", "{FC92F770-9690-498C-907C-630F6F7E8B59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EndeavourDrinks.DAL", "EndeavourDrinks.DAL\EndeavourDrinks.DAL.csproj", "{049149DB-8893-48BA-B523-1F31835E5BB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndeavourDrinks.DAL", "EndeavourDrinks.DAL\EndeavourDrinks.DAL.csproj", "{049149DB-8893-48BA-B523-1F31835E5BB2}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "EndeavourDrinks.App", "EndeavourDrinks.App\", "{6BB68835-34C8-4BC4-8307-5E6FE85B8CDE}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_58600"
+		Debug.AspNetCompiler.PhysicalPath = "EndeavourDrinks.App\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58600\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_58600"
+		Release.AspNetCompiler.PhysicalPath = "EndeavourDrinks.App\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58600\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "58600"
+		SlnRelativePath = "EndeavourDrinks.App\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +56,8 @@ Global
 		{049149DB-8893-48BA-B523-1F31835E5BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{049149DB-8893-48BA-B523-1F31835E5BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{049149DB-8893-48BA-B523-1F31835E5BB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB68835-34C8-4BC4-8307-5E6FE85B8CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB68835-34C8-4BC4-8307-5E6FE85B8CDE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

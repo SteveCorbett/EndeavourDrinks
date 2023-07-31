@@ -158,5 +158,7 @@
     <Build Include="Security\log.sql" />
     <Build Include="dbo\Stored Procedures\TrolleyGet.sql" />
     <Build Include="dbo\Stored Procedures\ProductsGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\TrolleyUpdateItem.sql" />
+    <Build Include="dbo\Stored Procedures\TrolleyRePrice.sql" />
   </ItemGroup>
 </Project>

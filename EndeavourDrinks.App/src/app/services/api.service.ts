@@ -31,4 +31,17 @@ export class ApiService {
     const apiStr: string = this.trolleyUrl + 'GetTrolley/' + customerId;
     return this.httpClient.get<ITrolleyGetResult>(apiStr);
   }
+
+  updateTrolley(
+    trolleyId: string,
+    productId: number,
+    quantity: number
+  ): Observable<ITrolleyGetResult> {
+    const apiStr: string = this.trolleyUrl + 'UpdateItem';
+    return this.httpClient.post<ITrolleyGetResult>(apiStr, {
+      trolleyId: trolleyId,
+      productId: productId,
+      quantity: quantity,
+    });
+  }
 }

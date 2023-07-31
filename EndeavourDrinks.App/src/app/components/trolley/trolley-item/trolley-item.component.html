@@ -1,0 +1,23 @@
+<div class="flex mx-2 my-1.5 items-center justify-between">
+  <div class="basis-6/12">{{ item.product.productName }}</div>
+  <div class="basis-2/12 flex justify-end max80">
+    {{ item.salePrice }}
+  </div>
+  <div class="basis-1/12 flex justify-end">
+    {{ item.quantity }}
+  </div>
+  <div class="basis-2/12 flex justify-end max80">
+    ${{ item.salePrice * item.quantity | formatValue : "1.2-2" }}
+  </div>
+  <div class="basis-1/12 max80">
+    <button
+      mat-mini-fab
+      color="accent"
+      (click)="removeItem(item)"
+      matTooltip="Remove all {{ item.product.productName }} from the trolley"
+      matTooltipPosition="below"
+    >
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
+</div>

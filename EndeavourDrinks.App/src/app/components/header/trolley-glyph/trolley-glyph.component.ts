@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { Router } from '@angular/router';
 
 import { CustomerService } from 'src/app/services/customer.service';
 import { TrolleyService } from 'src/app/services/trolley.service';
@@ -25,6 +26,7 @@ export class TrolleyGlyphComponent {
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
     private customerService: CustomerService,
+    private router: Router,
     private trolleyService: TrolleyService
   ) {
     iconRegistry.addSvgIcon(
@@ -43,5 +45,11 @@ export class TrolleyGlyphComponent {
       .subscribe((items: ITrolleyItem[]) => {
         this.trolleyCount = items.length;
       });
+  }
+
+  protected openTrolley(): void {
+    if (this.trolleyCount > 0) {
+      this.router.navigate(['/trolley']);
+    }
   }
 }

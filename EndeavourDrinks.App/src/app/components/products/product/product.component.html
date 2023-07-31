@@ -1,7 +1,32 @@
-<div class="flex mx-2 my-1.5">
-  <div class="basis-4/6 border-gray-200">{{ product.productName }}</div>
-  <div class="basis-1/6 border-gray-200 flex justify-end max80">
-    {{ product.salePrice }}
+<div class="flex mx-2 my-1.5 items-center justify-between">
+  <div class="basis-7/12">{{ product.productName }}</div>
+  <div class="basis-2/12 flex justify-end max80">
+    {{ product.salePrice | formatValue : "1.2-2" }}
   </div>
-  <div class="basis-1/6 border-gray-200 flex justify-end max80">xxx</div>
+  <div class="basis-1/12 flex justify-end">
+    {{ product.trolleyItem?.quantity | formatValue }}
+  </div>
+  <div class="basis-2/12 flex justify-end max80">
+    <button
+      mat-mini-fab
+      color="primary"
+      (click)="addToTrolley(1)"
+      matTooltip="Add a {{ product.productName }} to the trolley"
+      matTooltipPosition="below"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      color="accent"
+      (click)="addToTrolley(-1)"
+      [disabled]="
+        product.trolleyItem === undefined || product.trolleyItem.quantity < 1
+      "
+      matTooltip="Remove a {{ product.productName }} from the trolley"
+      matTooltipPosition="below"
+    >
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
 </div>

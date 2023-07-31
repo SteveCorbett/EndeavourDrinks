@@ -20,6 +20,7 @@ namespace EndeavourDrinks.Controllers
 
         [HttpGet]
         [Route("GetTrolley/{CustomerId}")]
+        [ProducesResponseType(typeof(TrolleyGetResult), 200)]
         public async Task<IActionResult> GetTrolley(int CustomerId) {
             try {
                 TrolleyGetResult result = await _trolleyRepository.GetTrolley(CustomerId);
@@ -30,33 +31,17 @@ namespace EndeavourDrinks.Controllers
             }
         }
 
-        //// POST: TrolleyController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection) {
-        //    try {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: TrolleyController/Delete/5
-        //public ActionResult Delete(int id) {
-        //    return View();
-        //}
-
-        //// POST: TrolleyController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection) {
-        //    try {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch {
-        //        return View();
-        //    }
-        //}
+        [HttpPost]
+        [Route("UpdateItem")]
+        [ProducesResponseType(typeof(TrolleyGetResult), 200)]
+        public async Task<IActionResult> UpdateItem([FromBody] TrolleyUpdateItemInput param) {
+            try {
+                TrolleyGetResult result = await _trolleyRepository.UpdateItem(param.trolleyId, param.productId, param.quantity);
+                return Ok(result);
+            }
+            catch (Exception) {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
     }
 }

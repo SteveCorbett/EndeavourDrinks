@@ -3,6 +3,7 @@ import { ApiService } from './api.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { GlobalErrorHandler } from '../injectables/global-error.handler';
 import { IProduct, Product } from '../models/product';
+import { ITrolleyItem, TrolleyItem } from '../models/trolleyItem';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,13 @@ export class ProductService {
     private apiService: ApiService,
     private errorHandler: GlobalErrorHandler
   ) {}
+
+  public clearTrolleyItems(): void {
+    const emptyItem: ITrolleyItem = new TrolleyItem();
+    this._productMap.forEach((product) => {
+      product.trolleyItem = emptyItem;
+    });
+  }
 
   public getProduct(productId: number): IProduct {
     let result: IProduct = this._productMap.get(productId) || new Product();
