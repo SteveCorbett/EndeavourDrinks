@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TrolleyGlyphComponent } from './trolley-glyph.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('TrolleyGlyphComponent', () => {
   let component: TrolleyGlyphComponent;
@@ -8,7 +9,7 @@ describe('TrolleyGlyphComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TrolleyGlyphComponent],
+      imports: [TrolleyGlyphComponent, HttpClientModule],
     });
     fixture = TestBed.createComponent(TrolleyGlyphComponent);
     component = fixture.componentInstance;

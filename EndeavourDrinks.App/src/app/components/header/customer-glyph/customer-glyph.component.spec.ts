@@ -1,14 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CustomerGlyphComponent } from './customer-glyph.component';
+import { HttpClientModule } from '@angular/common/http';
 
-describe('UserGlyphComponent', () => {
+describe('CustomerGlyphComponent', () => {
   let component: CustomerGlyphComponent;
   let fixture: ComponentFixture<CustomerGlyphComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CustomerGlyphComponent]
+      imports: [CustomerGlyphComponent, HttpClientModule],
     });
     fixture = TestBed.createComponent(CustomerGlyphComponent);
     component = fixture.componentInstance;
