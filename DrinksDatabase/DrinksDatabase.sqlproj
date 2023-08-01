@@ -125,6 +125,7 @@
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="log\Stored Procedures\" />
     <Folder Include="Security\" />
+    <Folder Include="scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Customers.sql">
@@ -160,5 +161,8 @@
     <Build Include="dbo\Stored Procedures\ProductsGetAll.sql" />
     <Build Include="dbo\Stored Procedures\TrolleyUpdateItem.sql" />
     <Build Include="dbo\Stored Procedures\TrolleyRePrice.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="scripts\initialData.sql" />
   </ItemGroup>
 </Project>

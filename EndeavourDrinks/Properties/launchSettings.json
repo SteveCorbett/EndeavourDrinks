@@ -6,7 +6,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "SQLCONNSTR_DrinksConnStr": "Data Source=DEV-12THLEVEL;Initial Catalog=Drinks;Integrated Security=True;Connect Timeout=60;Encrypt=False"
+        "SQLCONNSTR_DrinksConnStr": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EndeavourDrinks;Integrated Security=True;Connect Timeout=60;Encrypt=False"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5153"

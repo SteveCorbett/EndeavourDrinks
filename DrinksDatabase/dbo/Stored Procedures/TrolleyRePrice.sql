@@ -27,7 +27,8 @@ BEGIN
 	SET [SubTotal] = (SELECT COALESCE(SUM([Quantity] * [SalePrice]), 0) FROM [dbo].[TrolleyItems] WHERE [TrolleyId] = @TrolleyId AND [IsActive] = 1),
 		-- For now, we will not apply any discounts to the trolley 
 		[Discounts] = 0,
-		[OrderTotal] = (SELECT COALESCE(SUM([Quantity] * [SalePrice]), 0) FROM [dbo].[TrolleyItems] WHERE [TrolleyId] = @TrolleyId AND [IsActive] = 1) - [Discounts]
+		[OrderTotal] = (SELECT COALESCE(SUM([Quantity] * [SalePrice]), 0) FROM [dbo].[TrolleyItems] WHERE [TrolleyId] = @TrolleyId AND [IsActive] = 1) - [Discounts],
+		[UpdatedDate] = getutcdate()
 	WHERE [TrolleyId] = @TrolleyId;
 
 	END TRY

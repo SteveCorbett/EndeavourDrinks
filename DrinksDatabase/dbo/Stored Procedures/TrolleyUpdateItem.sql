@@ -40,10 +40,11 @@ BEGIN
 	WHEN MATCHED THEN
 		UPDATE SET 
 			[IsActive] = CASE WHEN [Target].[Quantity] + [Source].[Quantity] > 0 THEN 1 ELSE 0 END,
-			[Quantity] = [Target].[Quantity] + [Source].[Quantity]
+			[Quantity] = [Target].[Quantity] + [Source].[Quantity],
+			[UpdatedDate] = getutcdate()
 	WHEN NOT MATCHED AND @Quantity > 0 THEN
 		INSERT ([TrolleyId], [Sequence], [ProductId],  [Quantity], [RRP], [DiscPcnt], [DiscAmount], [SalePrice])
-		VALUES ([Source].[TrolleyId], (SELECT MAX([Sequence]) + 1 FROM [dbo].[TrolleyItems] WHERE [TrolleyId] = @TrolleyId), 
+		VALUES ([Source].[TrolleyId], (SELECT COALESCE(MAX([Sequence]), 0) + 1 FROM [dbo].[TrolleyItems] WHERE [TrolleyId] = @TrolleyId), 
 				[Source].[ProductId], [Source].[Quantity], [Source].[RRP], [Source].[DiscPcnt], [Source].[DiscAmount], [Source].[SalePrice])
 	;
 	EXEC [dbo].[TrolleyRePrice] @TrolleyId;
